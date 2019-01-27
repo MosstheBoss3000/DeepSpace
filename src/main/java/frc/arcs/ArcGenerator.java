@@ -81,8 +81,33 @@ public class ArcGenerator extends AbstractBobPathCreator {
 		 figure8.addWaypoint(15, 15, 0, 6, 6);
 		 figure8.addWaypoint(20, 10, -89.99, 0, 6);
 	
-		 
-		 return asList(exampleArc, straight, backwards, forwardLeft, figure8); // return asList(path1, path2, path3, ...);
+		 BobPath hpRocketClose = new BobPath(config, "HpRocketClose");
+		hpRocketClose.addWaypoint(startingPoint);
+		hpRocketClose.addWaypointRelative(inInches(200), inInches(10), -25.0, 0, 3);
+
+		BobPath hpRocketMiddle = new BobPath(config, "HpRocketMiddle");
+		hpRocketMiddle.addWaypoint(startingPoint);
+		// hpRocketMiddle.addWaypointRelative(inInches(170.0), inInches(50.0), 10.0, 3, 3);
+		// hpRocketMiddle.addWaypointRelative(inInches(59.0), inInches(-28.0), -89.99, 0, 3);
+		hpRocketMiddle.addWaypointRelative(inInches(211), inInches(40), 0.0, 0, 6);
+		hpRocketMiddle.addWaypointRelative(inInches(5), inInches(-5), -89.99, 0, 3);
+
+		BobPath hpRocketFar = new BobPath(config, "HpRocketFar");
+		hpRocketFar.addWaypoint(startingPoint);
+		hpRocketFar.addWaypointRelative(inInches(241), inInches(35), -10.0, 3, 4);
+		hpRocketFar.addWaypointRelative(inInches(10), inInches(-10), -89.99, 3, 4);
+		hpRocketFar.addWaypointRelative(inInches(-5), inInches(-5), -15.0, 0, 3);
+
+		BobPath forward3Feet = new BobPath(config, "Forward3Feet");
+		forward3Feet.addWaypoint(startingPoint);
+		forward3Feet.addWaypointRelative(3, 0, 0, 0, 3);
+
+		// BobPath cargoShiptoHp = new  BobPath(config, "CargoShiptoHp");
+		// cargoShiptoHp.addWaypoint(new Waypoint (inInches(270.0), inInches(106), inDegrees(-89.99), 0, 3));
+		// cargoShiptoHp.addWaypointRelative(inInches(-40), inInches(-40), 0.0, 0, 4);
+		// // cargoShiptoHp.addWaypointRelative(inInches(-212.5), inInches(-70.0), 90.0, 0, 5);
+
+		 return asList(exampleArc, straight, backwards, forwardLeft, forward3Feet, figure8, hpRocketClose, hpRocketMiddle, hpRocketFar/*cargoShiptoHp*/); // return asList(path1, path2, path3, ...);
 	}
 	
 	
@@ -110,6 +135,20 @@ public class ArcGenerator extends AbstractBobPathCreator {
 		speedTesting.addWaypointRelative(3, 3, 89.99, 3, 5);
 		speedTesting.addWaypointRelative(-3, 3, 89.99, 0, 3);
 
-		return asList(distanceScaling, turnScaling, speedTesting);
+		BobPath forward1Foot = new BobPath(config, "Forward1Foot");
+		forward1Foot.addWaypoint(startingPoint);
+		forward1Foot.addWaypointRelative(inInches(12), 0, 0, 0, 3);
+
+		
+
+		return asList(distanceScaling, turnScaling, speedTesting, forward1Foot);
+	}
+
+	private static double inInches(double inches) {
+		return ((double) inches) / 12.0;
+	}
+
+	private static double inDegrees(double degree) {
+		return inInches(90) * degree / 360.0;
 	}
 }

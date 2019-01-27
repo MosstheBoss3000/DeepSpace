@@ -17,16 +17,19 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.arcs.DistanceScalingArc;
 import frc.arcs.ExampleArc;
 import frc.arcs.Figure8Arc;
+import frc.arcs.Forward1FootArc;
 import frc.arcs.ForwardLeftArc;
 import frc.arcs.MultiSpeedTestArc;
 import frc.arcs.SpeedTestingArc;
 import frc.arcs.Straight10FeetArc;
 import frc.arcs.StraightBack10FeetArc;
 import frc.arcs.TurnScalingArc;
+import frc.robot.commands.Auto.testAutoVisionGroup;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.JesterArm;
 import frc.robot.subsystems.JesterWrist;
+import frc.robot.subsystems.Camera.CAMERA;
 import frc.robot.subsystems.HatchGrabber;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -112,7 +115,8 @@ public class Robot extends TimedRobot {
     // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new Straight10FeetArc());
     // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new ForwardLeftArc());
     // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new DistanceScalingArc());
-    // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new Figure8Arc());
+    // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new Forward1FootArc());
+
 
     autonomousCommand = null;
     // schedule the autonomous command (example)

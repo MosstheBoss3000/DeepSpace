@@ -14,6 +14,10 @@ import frc.robot.subsystems.Camera.CAMERA;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.Camera.driveByDocking;
 import frc.robot.commands.Camera.driveByDockingPID;
+import frc.arcs.Forward1FootArc;
+import frc.robot.commands.Auto.AutoGroup;
+import frc.robot.commands.Auto.testAuto;
+import frc.robot.commands.Auto.testAutoVisionGroup;
 import frc.robot.commands.Camera.aimByVision;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
@@ -45,18 +49,12 @@ public class OI {
 
   private OI() {
     
-      // new JoystickButton(driver, ControllerMap.X).whileHeld(new driveByDocking(CAMERA.FRONT));
-      // new JoystickButton(driver, ControllerMap.B).whileHeld(new driveByDocking(CAMERA.BACK));
+      // new JoystickButton(driver, ControllerMap.X).whileHeld(new AutoGroup(new Forward1FootArc()));
+      // new JoystickButton(driver, ControllerMap.B).whileHeld(new testAutoVisionGroup(true, CAMERA.BACK));
       new JoystickButton(driver, ControllerMap.Y).whileHeld(new driveByDockingPID(CAMERA.FRONT));
       new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDockingPID(CAMERA.BACK));
-      // new JoystickButton(driver, ControllerMap.A).whenPressed(new driveByCamera(CAMERA.FRONT));
-      // new JoystickButton(driver, ControllerMap.A).whenPressed(new driveByCamera(CAMERA.BACK));
+      new JoystickButton(driver, ControllerMap.X).whileHeld(new testAuto(CAMERA.FRONT));
     
-      // new JoystickButton(operator, ControllerMap.A).whenPressed(new ToggleArmCommand());
-      // new JoystickButton(operator, ControllerMap.Y).whenPressed(new ToggleHeightCommand());
-      // new JoystickButton(driver, ControllerMap.Y).whileHeld(new aimByVision());
-      // new JoystickButton(driver, ControllerMap.X).whileHeld(new driveByDockingPID());
-
   }
 
   /**
