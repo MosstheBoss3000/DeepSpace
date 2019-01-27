@@ -45,7 +45,7 @@ public class driveByAssist extends PIDCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Camera.getCamera(location);
+    Camera.getInstance().getCamera(location);
     Camera.getInstance().setCamera(location);
     Camera.getInstance().setDockingMode();
   }
