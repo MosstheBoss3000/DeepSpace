@@ -10,6 +10,7 @@ package frc.robot.commands.Auto;
 import javax.tools.DocumentationTool.Location;
 
 import com.team319.follower.FollowArc;
+import com.team319.trajectory.SrxTrajectory;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.arcs.Forward1FootArc;

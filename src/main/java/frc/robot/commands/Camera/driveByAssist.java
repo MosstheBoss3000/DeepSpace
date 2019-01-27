@@ -23,7 +23,7 @@ public class driveByAssist extends PIDCommand {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
 
-    super(0.01, 0.001, 0.001);   // P,I,D values to use on Aiming.
+    super(0.01, 0.00, 0.00);   // P,I,D values to use on Aiming.
 
     requires(Drivetrain.getInstance());
     requires(Camera.getInstance());
@@ -45,6 +45,7 @@ public class driveByAssist extends PIDCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Camera.getCamera(location);
     Camera.getInstance().setCamera(location);
     Camera.getInstance().setDockingMode();
   }

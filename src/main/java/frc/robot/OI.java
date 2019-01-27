@@ -16,7 +16,6 @@ import frc.robot.commands.Camera.driveByDocking;
 import frc.robot.commands.Camera.driveByDockingPID;
 import frc.arcs.Forward1FootArc;
 import frc.robot.commands.Auto.AutoGroup;
-// import frc.robot.commands.Auto.testAuto;
 import frc.robot.commands.Auto.testAutoVisionGroup;
 import frc.robot.commands.Camera.aimByVision;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -53,7 +52,7 @@ public class OI {
       // new JoystickButton(driver, ControllerMap.B).whileHeld(new testAutoVisionGroup(true, CAMERA.BACK));
       new JoystickButton(driver, ControllerMap.Y).whileHeld(new driveByDockingPID(CAMERA.FRONT));
       new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDockingPID(CAMERA.BACK));
-      // new JoystickButton(driver, ControllerMap.X).whileHeld(new testAuto(CAMERA.FRONT));
+      new JoystickButton(driver, ControllerMap.X).whileHeld(new testAutoVisionGroup(false, CAMERA.FRONT));
     
   }
 
