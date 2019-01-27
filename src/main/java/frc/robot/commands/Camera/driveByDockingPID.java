@@ -10,6 +10,7 @@ package frc.robot.commands.Camera;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Camera.CAMERA;
 
 public class driveByDockingPID extends Command {
 
@@ -32,12 +33,14 @@ public class driveByDockingPID extends Command {
     double result;
     double error;
     private boolean finished = false;
+    private CAMERA location; 
 
-  public driveByDockingPID() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+  public driveByDockingPID(CAMERA location) {
+    Camera.getInstance().setCamera(location);
     requires(Camera.getInstance());
     requires(Drivetrain.getInstance());
+
+    this.location = location;
   }
 
   // Called just before this Command runs the first time
@@ -51,31 +54,35 @@ public class driveByDockingPID extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Camera.getInstance().getCamera(location);
+    Camera.getInstance().setCamera(location);
     Camera.getInstance().setDockingMode();
-    double txFront = Camera.getInstance().getdegRotationToTargetFront();
-    double txBack = Camera.getInstance().getdegRotationToTargetBack();
-    double tyFront = Camera.getInstance().getdegVerticalToTargetFront();
-    double tyBack = Camera.getInstance().getdegVerticalToTargetBack();
-    boolean TargetFoundFront = Camera.getInstance().getIsTargetFoundFront();
-    boolean TargetFoundBack = Camera.getInstance().getIsTargetFoundBack();
-    double heading_error = -txFront;
-    double steering_adjust = 0.0;
-    double distance_error = -tyFront; //subtracting 2 due to range error on camera on back of the robot.
 
-    if(Math.abs(txFront) < 0.1) {
+    double tx = Camera.getInstance().RotationalDegreesToTarget();
+    double ty = Camera.getInstance().VerticalDegreesToTarget();
+
+    double heading_error = -tx;
+    double steering_adjust = 0.0;
+    double distance_error = -ty; //subtracting 2 due to range error on camera on back of the robot.
+
+    if(Math.abs(tx) < 0.1) {
       finished = true;
     }
 
-    steering_adjust = PIDCalc2(txFront);
+    steering_adjust = PIDCalc2(tx);
 
     
     double distance_adjust = (kpDistance * distance_error);
 
-    left_command = -distance_adjust + steering_adjust;
-    right_command = -distance_adjust - steering_adjust;
-    
-    // Drivetrain.getInstance().tankDrive(left_command, right_command);   //Remove the boolean value from arcadeDrive?
-    Drivetrain.getInstance().tankDrive (left_command, right_command);
+    if (location == CAMERA.FRONT) {
+      left_command += steering_adjust - distance_adjust;
+      right_command -= steering_adjust + distance_adjust; // changed from "-"
+    } else {
+      left_command += steering_adjust + distance_adjust;
+      right_command -= steering_adjust - distance_adjust;
+    }
+
+    Drivetrain.getInstance().tankDrive(left_command, right_command);
 
   }
 

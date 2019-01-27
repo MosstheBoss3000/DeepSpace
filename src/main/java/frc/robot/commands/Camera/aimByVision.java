@@ -36,8 +36,8 @@ public class aimByVision extends Command {
   @Override
   protected void execute() {
     Camera.getInstance().setDockingMode();
-      double txFront = Camera.getInstance().getdegRotationToTargetFront();
-      boolean targetFound = Camera.getInstance().getIsTargetFoundFront();
+      double txFront = Camera.getInstance().RotationalDegreesToTarget();
+      // boolean targetFound = Camera.getInstance().getIsTargetFoundFront();
       double heading_error = -txFront;
       double steering_adjust = 0.0;
 

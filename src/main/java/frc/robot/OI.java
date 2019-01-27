@@ -45,10 +45,12 @@ public class OI {
 
   private OI() {
     
-      new JoystickButton(driver, ControllerMap.X).whileHeld(new driveByDocking(CAMERA.FRONT));
-      new JoystickButton(driver, ControllerMap.B).whileHeld(new driveByDocking(CAMERA.BACK));
-      new JoystickButton(driver, ControllerMap.A).whenPressed(new driveByCamera(CAMERA.FRONT));
-      new JoystickButton(driver, ControllerMap.A).whenPressed(new driveByCamera(CAMERA.BACK));
+      // new JoystickButton(driver, ControllerMap.X).whileHeld(new driveByDocking(CAMERA.FRONT));
+      // new JoystickButton(driver, ControllerMap.B).whileHeld(new driveByDocking(CAMERA.BACK));
+      new JoystickButton(driver, ControllerMap.Y).whileHeld(new driveByDockingPID(CAMERA.FRONT));
+      new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDockingPID(CAMERA.BACK));
+      // new JoystickButton(driver, ControllerMap.A).whenPressed(new driveByCamera(CAMERA.FRONT));
+      // new JoystickButton(driver, ControllerMap.A).whenPressed(new driveByCamera(CAMERA.BACK));
     
       // new JoystickButton(operator, ControllerMap.A).whenPressed(new ToggleArmCommand());
       // new JoystickButton(operator, ControllerMap.Y).whenPressed(new ToggleHeightCommand());
