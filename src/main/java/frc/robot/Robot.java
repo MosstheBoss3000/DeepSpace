@@ -115,15 +115,15 @@ public class Robot extends TimedRobot {
     // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new Straight10FeetArc());
     // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new ForwardLeftArc());
     // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new DistanceScalingArc());
-    // autonomousCommand = new FollowArc(Drivetrain.getInstance(), new Forward1FootArc());
+    autonomousCommand = new FollowArc(Drivetrain.getInstance(), new Forward1FootArc());
 
 
-    autonomousCommand = null;
-    // schedule the autonomous command (example)
+  //   autonomousCommand = null;
+  //   // schedule the autonomous command (example)
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
-    HelixEvents.getInstance().startLogging();
+  //   HelixEvents.getInstance().startLogging();
   }
 
   /**
