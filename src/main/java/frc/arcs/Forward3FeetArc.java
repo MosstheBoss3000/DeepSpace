@@ -3,21 +3,21 @@ package frc.arcs;
 import com.team319.follower.SrxMotionProfile;
 import com.team319.follower.SrxTrajectory;
 
-public class DistanceScalingArc extends SrxTrajectory {
+public class Forward3FeetArc extends SrxTrajectory {
 	
 	// WAYPOINTS:
 	// (X,Y,degrees)
-	// (2.00,13.50,0.00)
-	// (5.00,13.50,0.00)
+	// (1.63,3.79,0.00)
+	// (4.63,3.79,0.00)
 	
-    public DistanceScalingArc() {
+    public Forward3FeetArc() {
 		super();
 		this.highGear = true;
 		centerProfile = new SrxMotionProfile(centerPoints.length, centerPoints);
 	}
 
 	
-    public DistanceScalingArc(boolean flipped) {
+    public Forward3FeetArc(boolean flipped) {
 		super();
 		this.highGear = true;
 		this.flipped = flipped;
