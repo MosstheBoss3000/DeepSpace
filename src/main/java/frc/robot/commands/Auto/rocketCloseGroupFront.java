@@ -12,7 +12,10 @@ import frc.arcs.HpRocketCloseArc;
 import frc.arcs.HpRocketCloseReverseArc;
 import frc.arcs.TurnScalingArc;
 import frc.robot.camera.CAMERA;
-import frc.robot.commands.FollowArc;
+
+import com.team319.follower.FollowArc;
+// import frc.robot.commands.FollowArc;
+// import com.team319.follower.FollowsArc;
 import frc.robot.commands.drivetrain.driveByDocking;
 import frc.robot.commands.drivetrain.driveByDockingPID;
 import frc.robot.commands.drivetrain.resetHeading;
@@ -24,9 +27,9 @@ public class rocketCloseGroupFront extends CommandGroup {
    */
   public rocketCloseGroupFront() {
     addSequential(new resetHeading());
-    addSequential(new FollowArc(Drivetrain.getInstance(), new HpRocketCloseArc(), false, false, false));
+    addSequential(new FollowArc(Drivetrain.getInstance(), new HpRocketCloseArc(), false, false));
     addSequential(new driveByDockingPID(CAMERA.FRONT));
     // addSequential(new FollowArc(Drivetrain.getInstance(), new HpRocketCloseArc(), false, true, true));
-    addSequential(new FollowArc(Drivetrain.getInstance(), new HpRocketCloseReverseArc(), false, false, false));
+    addSequential(new FollowArc(Drivetrain.getInstance(), new HpRocketCloseReverseArc(), false, false));
   }
 }

@@ -57,12 +57,12 @@ public class OI {
       new JoystickButton(driver, ControllerMap.RB).whenPressed(new driveByCamera(CAMERA.FRONT));
       new JoystickButton(driver, ControllerMap.RB).whenPressed(new driveByCamera(CAMERA.BACK));
 
-      new JoystickButton(driver, ControllerMap.Y).whileHeld(new driveByDockingPID(CAMERA.FRONT));
-      new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDockingPID(CAMERA.BACK));
-      // new JoystickButton(driver, ControllerMap.Y).whileHeld(new driveByDocking(CAMERA.FRONT));
-      // new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDocking(CAMERA.BACK));
+      // new JoystickButton(driver, ControllerMap.Y).whileHeld(new driveByDockingPID(CAMERA.FRONT));
+      // new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDockingPID(CAMERA.BACK));
+      new JoystickButton(driver, ControllerMap.Y).whenPressed(new driveByDocking(CAMERA.FRONT));
+      new JoystickButton(driver, ControllerMap.A).whileHeld(new driveByDocking(CAMERA.BACK));
 
-      new JoystickButton(driver, ControllerMap.LB).whileHeld(new FollowArcTesting());
+      new JoystickButton(driver, ControllerMap.LB).whileHeld(new FollowArcTesting(CAMERA.FRONT));
       // new JoystickButton(driver, ControllerMap.X).whileHeld(new driveByAssistJosh(CAMERA.FRONT);
 
       //Operator Controls
